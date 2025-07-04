@@ -2,6 +2,15 @@
   "version": 3,
   "targets": {
     "net9.0": {
+      "Box2D.NetStandard/1.0.4": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.1/Box2D.NetStandard.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.1/Box2D.NetStandard.dll": {}
+        }
+      },
       "Microsoft.CodeCoverage/17.14.1": {
         "type": "package",
         "compile": {
@@ -449,10 +458,35 @@
         "runtime": {
           "bin/placeholder/Engine.Core.dll": {}
         }
+      },
+      "Engine.Physics/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v9.0",
+        "dependencies": {
+          "Engine.Core": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Engine.Physics.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Engine.Physics.dll": {}
+        }
       }
     }
   },
   "libraries": {
+    "Box2D.NetStandard/1.0.4": {
+      "sha512": "XDVhUWuMUO0w0ZSKXhDCs63OUceGBitUsiYxeIL2Frq8pDu6l1YrfUdRSlY1XpWeZcMOTfxh8VL/ASRzCAtSKw==",
+      "type": "package",
+      "path": "box2d.netstandard/1.0.4",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "box2d.netstandard.1.0.4.nupkg.sha512",
+        "box2d.netstandard.nuspec",
+        "lib/netstandard2.1/Box2D.NetStandard.dll"
+      ]
+    },
     "Microsoft.CodeCoverage/17.14.1": {
       "sha512": "pmTrhfFIoplzFVbhVwUquT+77CbGH+h4/3mBpdmIlYtBi9nAB+kKI6dN3A/nV4DFi3wLLx/BlHIPK+MkbQ6Tpg==",
       "type": "package",
@@ -961,11 +995,18 @@
       "type": "project",
       "path": "../Engine.Core/Engine.Core.csproj",
       "msbuildProject": "../Engine.Core/Engine.Core.csproj"
+    },
+    "Engine.Physics/1.0.0": {
+      "type": "project",
+      "path": "../Engine.Physics/Engine.Physics.csproj",
+      "msbuildProject": "../Engine.Physics/Engine.Physics.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net9.0": [
-      "Engine.Core >= 1.0.0"
+      "Box2D.NetStandard >= 1.0.4",
+      "Engine.Core >= 1.0.0",
+      "Engine.Physics >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -1003,6 +1044,9 @@
           "projectReferences": {
             "C:\\Users\\aleks\\projects\\Engine3\\Engine.Core\\Engine.Core.csproj": {
               "projectPath": "C:\\Users\\aleks\\projects\\Engine3\\Engine.Core\\Engine.Core.csproj"
+            },
+            "C:\\Users\\aleks\\projects\\Engine3\\Engine.Physics\\Engine.Physics.csproj": {
+              "projectPath": "C:\\Users\\aleks\\projects\\Engine3\\Engine.Physics\\Engine.Physics.csproj"
             }
           }
         }
@@ -1022,6 +1066,12 @@
     "frameworks": {
       "net9.0": {
         "targetAlias": "net9.0",
+        "dependencies": {
+          "Box2D.NetStandard": {
+            "target": "Package",
+            "version": "[1.0.4, )"
+          }
+        },
         "imports": [
           "net461",
           "net462",

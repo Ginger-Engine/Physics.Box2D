@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Engine.Physics.Box2D")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+11434450a9649b28d0518b73834c61ae48b5b342")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+360debc12f36983f5a7d4cef1b9a361e2fcf0de1")]
 [assembly: System.Reflection.AssemblyProductAttribute("Engine.Physics.Box2D")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Engine.Physics.Box2D")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
