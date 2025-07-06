@@ -5,6 +5,7 @@ using Box2DX.Dynamics;
 using Engine.Physics.Box2D.Colliders;
 using Engine.Physics.Colliders;
 using Engine.Physics.Components;
+using Engine.Rendering;
 
 namespace Engine.Physics.Box2D;
 
@@ -12,14 +13,19 @@ public class Box2DPhysicsWorld : IPhysicsWorld
 {
     private readonly World world;
 
-    public Box2DPhysicsWorld()
+    public Box2DPhysicsWorld(RenderingStage renderingStage)
     {
         var aabb = new AABB
         {
             LowerBound = new Vec2(-1000, -1000),
             UpperBound = new Vec2(1000, 1000)
         };
-        world = new World(aabb, new Vec2(0, -9.8f), true);
+        world = new World(aabb, new Vec2(0, 0), true);
+        var debugDraw = new MyDebugDraw(renderingStage);
+        debugDraw.AppendFlags(DebugDraw.DrawFlags.Shape);
+        debugDraw.AppendFlags(DebugDraw.DrawFlags.CoreShape);
+        // debugDraw.AppendFlags(DebugDraw.DrawFlags.CenterOfMass);
+        world.SetDebugDraw(debugDraw);
     }
 
     public Vector2 Gravity
@@ -31,9 +37,6 @@ public class Box2DPhysicsWorld : IPhysicsWorld
     public IPhysicsBody CreateBody(BodyDefinition bodyDefinition, ICollider[] colliders)
     {
         var body = world.CreateBody(bodyDefinition.ToBox2DBodyDef());
-        if (bodyDefinition.BodyType != PhysicsBodyType.Dynamic)
-            body.SetStatic();
-
         foreach (var collider in colliders)
         {
             if (collider is Box2DAbstractCollider box2DCollider)
@@ -43,6 +46,9 @@ public class Box2DPhysicsWorld : IPhysicsWorld
             else throw new Exception("Collider type is not Box2DAbstractCollider");
         }
 
+        body.SetMassFromShapes();
+        if (bodyDefinition.BodyType != PhysicsBodyType.Dynamic)
+            body.SetStatic();
         return new Box2DPhysicsBody(body);
     }
 

@@ -471,6 +471,20 @@
         "runtime": {
           "bin/placeholder/Engine.Physics.dll": {}
         }
+      },
+      "Engine.Rendering/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v9.0",
+        "dependencies": {
+          "Engine.Core": "1.0.0",
+          "Engine.Physics": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Engine.Rendering.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Engine.Rendering.dll": {}
+        }
       }
     }
   },
@@ -1000,13 +1014,19 @@
       "type": "project",
       "path": "../Engine.Physics/Engine.Physics.csproj",
       "msbuildProject": "../Engine.Physics/Engine.Physics.csproj"
+    },
+    "Engine.Rendering/1.0.0": {
+      "type": "project",
+      "path": "../Engine.Rendering/Engine.Rendering.csproj",
+      "msbuildProject": "../Engine.Rendering/Engine.Rendering.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net9.0": [
       "Box2D.NetStandard >= 1.0.4",
       "Engine.Core >= 1.0.0",
-      "Engine.Physics >= 1.0.0"
+      "Engine.Physics >= 1.0.0",
+      "Engine.Rendering >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -1047,6 +1067,9 @@
             },
             "C:\\Users\\aleks\\projects\\Engine3\\Engine.Physics\\Engine.Physics.csproj": {
               "projectPath": "C:\\Users\\aleks\\projects\\Engine3\\Engine.Physics\\Engine.Physics.csproj"
+            },
+            "C:\\Users\\aleks\\projects\\Engine3\\Engine.Rendering\\Engine.Rendering.csproj": {
+              "projectPath": "C:\\Users\\aleks\\projects\\Engine3\\Engine.Rendering\\Engine.Rendering.csproj"
             }
           }
         }
