@@ -2,6 +2,7 @@
 using Box2DX.Common;
 using Box2DX.Dynamics;
 using Engine.Rendering;
+using Engine.Rendering.RaylibBackend;
 
 namespace Engine.Physics.Box2D;
 
@@ -16,7 +17,7 @@ public class MyDebugDraw : DebugDraw
         renderingStage.OnAfterRenderEvent += backend =>
         {
             foreach (var (from, to, color) in _lines)
-                backend.DrawLine(from, to, color, 3);
+                (backend as RaylibBackend).DrawLine(from, to, color, 3);
             IsRendered = true;
         };
     }
